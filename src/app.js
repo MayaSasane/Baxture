@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// In-memory database (simple array)
+ 
 let users = [
   { id: uuidv4(), username: 'John Doe', age: 25, hobbies: ['Reading', 'Traveling'] },
   { id: uuidv4(), username: 'Jane Doe', age: 30, hobbies: ['Cooking', 'Painting'] },
@@ -15,12 +15,12 @@ let users = [
  
 app.use(express.json());
 
-// GET all users
+ 
 app.get('/api/users', (req, res) => {
   res.status(200).json(users);
 });
 
-// GET a single user by ID
+ 
 app.get('/api/users/:userId', (req, res) => {
   const userId = req.params.userId;
 
@@ -37,7 +37,7 @@ app.get('/api/users/:userId', (req, res) => {
   res.status(200).json(user);
 });
 
-// POST create user
+ 
 app.post('/api/users', (req, res) => {
   const { username, age, hobbies } = req.body;
 
@@ -51,7 +51,7 @@ app.post('/api/users', (req, res) => {
   res.status(201).json(newUser);
 });
 
-// PUT update user
+ 
 app.put('/api/users/:userId', (req, res) => {
   const userId = req.params.userId;
 
@@ -75,7 +75,7 @@ app.put('/api/users/:userId', (req, res) => {
   res.status(200).json(users[userIndex]);
 });
 
-// DELETE user
+ 
 app.delete('/api/users/:userId', (req, res) => {
   const userId = req.params.userId;
 
@@ -94,12 +94,12 @@ app.delete('/api/users/:userId', (req, res) => {
   res.status(200).json({ message: 'successfully deleted' });
 });
 
-// Handling non-existing endpoints
+ 
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
 
-// Handling server-side errors
+ 
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Internal Server Error' });

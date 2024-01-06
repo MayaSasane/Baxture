@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const { v4: uuidv4 } = require('uuid');
-const app = require('../testcases/src/app'); // Replace with the path to your actual app file
+const app = require('../testcases/src/app');  
 
 chai.use(chaiHttp);
 const expect = chai.expect;
@@ -11,7 +11,7 @@ describe('API Tests', () => {
     const res = await chai.request(app).get('/api/users');
     expect(res).to.have.status(200);
     expect(res.body).to.be.an('array');
-    // Add more assertions based on your application logic
+     
   });
 
   it('should create a new object with a POST request', async () => {
@@ -31,7 +31,7 @@ describe('API Tests', () => {
 
     it('should get a created record by its id', async () => {
       const res = await chai.request(app).get('/api/users');
-      userId = res.body[0].id; // Assuming the first record is the one created in the previous test
+      userId = res.body[0].id;  
       expect(res).to.have.status(200);
       expect(res.body[0]).to.have.property('id');
     });

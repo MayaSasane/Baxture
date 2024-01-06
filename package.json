@@ -1,0 +1,30 @@
+{
+  "name": "testcases",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon src/app.js",
+    "start:prod": "npm run build && node dist/app.js",
+    "build": "babel src -d dist",
+    "test": "mocha --require esm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "esm": "^3.2.25",
+    "mocha": "^10.2.0",
+    "nodemon": "^3.0.2"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.23.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
+  }
+}
